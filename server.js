@@ -23,11 +23,11 @@ app.post('/SARAEmail', function (req, res) {
     //res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	console.log(req.body); 
 	var response= "Loud and clear"; 
-	res.send(req.body)
+	res.send(req.body); // send the body back as a response
 	//res.sendStatus(200);
 	
-	//mailer.sendMail('dakota.amiot@uky.edu')
-	//mailer.sendMail('atsn222@g.uky.edu')
+	mailer.sendMail('dakota.amiot@uky.edu')
+	mailer.sendMail('atsn222@g.uky.edu')
 })
 
 app.get('/Anthony', function(req, res){
