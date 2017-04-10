@@ -42,5 +42,8 @@ module.exports = {
 	tester: function(emailAddress){
 		mailOptions.to = emailAddress;
 		console.log(mailOptions.to);
+	},
+	formatSARAEmail: function(userData){
+		console.log("WIP");
 	}
 };
