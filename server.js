@@ -16,7 +16,7 @@ app.use(cors());
 
 app.post('/SARAEmail', function (req, res) {
 	console.log(req.body); 
-	
+	mailer.formatSARAEmail(req.body);
 	res.send(req.body); // send the body back as a response
 	//res.sendStatus(200);
 	

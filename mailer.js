@@ -44,6 +44,36 @@ module.exports = {
 		console.log(mailOptions.to);
 	},
 	formatSARAEmail: function(userData){
-		console.log("WIP");
+		mailOptions.text = ""
+		if(userData.firstname != null && userData.lastname != null)
+		{
+			mailOptions.text += "Name: " + userData.firstname + " " + userData.lastname + "\n";
+		}
+		if(userData.date != null)
+		{
+			mailOptions.text += "Date: " + userData.date +"\n";
+		}
+		if(userData.email != null)
+		{
+			mailOptions.text += "Email: " + userData.email + "\n";
+		}
+		if(userData.toggleCharged != null)
+		{
+			mailOptions.text += "Press Charges: " + userData.toggleCharged + "\n";
+		}
+		if(userData.toggleEvidence != null)
+		{
+			mailOptions.text += "Collect Evidence: " + userData.toggleCharged + "\n";
+		}
+		if(userData.toggleMedical)
+		{
+			mailOptions.text += "Requires Medical Attention: " + userData.toggleCharged + "\n";
+		}
+		if(userData.toggleRelocation)
+		{
+			mailOptions.text += "Needs to be relocated: " + userData.toggleCharged + "\n";
+		}
+
+		this.sendMail("deca222@g.uky.edu");
 	}
 };
