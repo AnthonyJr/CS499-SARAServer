@@ -16,6 +16,7 @@
 		"ejs": "^2.3.3",
 		"express": "^4.13.1",
 		"express-session": "^1.11.3",
+		"request": "^2.81.0",
 		"nodemailer": "^3.1.3"
 	}
 }

@@ -43,57 +43,64 @@ module.exports = {
 		mailOptions.to = emailAddress;
 		console.log(mailOptions.to);
 	},
-	formatSARAEmail: function(userData){
+	formatSARAEmail: function(userData, callback){
 		mailOptions.text = ""
 		mailOptions.html = "<ul>"
-		if(userData.firstname != null && userData.lastname != null)
+		if(userData.firstname != undefined && userData.lastname != undefined)
 		{
 			mailOptions.text += "Name: " + userData.firstname + " " + userData.lastname + "\n";
 			mailOptions.html += "<li>Name: " + userData.firstname + " " + userData.lastname;
 
 		}
-		if(userData.location != null)
+		if(userData.location != undefined)
 		{
 			mailOptions.text += "Location: " + userData.location +"\n";
 			mailOptions.html += "<li>Location: " + userData.location;
 		}
-		if(userData.date != null)
+		if(userData.date != undefined)
 		{
-			mailOptions.text += "Date: " + userData.date +"\n";
-			mailOptions.html += "<li>Date: " + userData.date;
+			mailOptions.text += "Date of incident: " + userData.date +"\n";
+			mailOptions.html += "<li>Date of incident: " + userData.date;
 		}
-		if(userData.email != null)
+		if(userData.email != undefined)
 		{
 			mailOptions.text += "Email: " + userData.email + "\n";
 			mailOptions.html += "<li>Email: " + userData.email;
 		}
-		if(userData.phone != null)
+		if(userData.phone != undefined)
 		{
 			mailOptions.text += "Phone #: " + userData.phone + "\n";
 			mailOptions.html += "<li>Phone #: " + userData.phone;
 		}
-		if(userData.toggleCharged != null)
+		if(userData.toggleCharged != undefined)
 		{
 			mailOptions.text += "Press Charges: " + userData.toggleCharged + "\n";
 			mailOptions.html += "<li>Press Charges: " + userData.toggleCharged;
 		}
-		if(userData.toggleEvidence != null)
+		if(userData.toggleEvidence != undefined)
 		{
 			mailOptions.text += "Collect Evidence: " + userData.toggleEvidence + "\n";
 			mailOptions.html += "<li>Collect Evidence: " + userData.toggleEvidence + "\n";
 		}
-		if(userData.toggleMedical)
+		if(userData.toggleMedical != undefined)
 		{
 			mailOptions.text += "Requires Medical Attention: " + userData.toggleMedical + "\n";
 			mailOptions.html += "<li>Requires Medical Attention: " + userData.toggleMedical;
 		}
-		if(userData.toggleRelocation)
+		if(userData.toggleRelocation != undefined)
 		{
 			mailOptions.text += "Needs to be relocated: " + userData.toggleRelocation + "\n";
 			mailOptions.html += "<li>Needs to be relocated: " + userData.toggleRelocation;
 		}
 		//mailOptions.html += mailOptions.text
 		mailOptions.html += "</ul>"
-		this.sendMail("deca222@g.uky.edu");
+		mailOptions.to = "deca222@g.uky.edu"
+		transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			callback(error);
+		}
+			console.log('Message %s sent: %s', info.messageId, info.response);
+			callback(null);
+		})
 	}
 };
