@@ -27,12 +27,13 @@ app.post('/SARAEmail', function (req, res) {
     });
 	
 	//This interacts with luna PHP server to add incident to database
-	request('https://luna-app.000webhostapp.com/api/v1/logIncident.php?userHash='+req.body.username+'&location=University%20of%20Kentucky&date='+req.body.date, function (error, response, body) {
-  		//console.log('error:', error); // Print the error if one occurred 
-  		//console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-  		//console.log('body:', body); // Print the HTML for the Google homepage. 
-	});
-
+	if(req.body.login){
+		request('https://luna-app.000webhostapp.com/api/v1/logIncident.php?userHash='+req.body.username+'&location=University%20of%20Kentucky&date='+req.body.date, function (error, response, body) {
+  			//console.log('error:', error); // Print the error if one occurred 
+  			console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
+  			//console.log('body:', body); // Print the HTML for the Google homepage. 
+		});
+	}
 })
 
 //Literally just for checking to make sure server is alive. Will be deleted before production
