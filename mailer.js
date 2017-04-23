@@ -212,7 +212,12 @@ module.exports = {
 		}
 
 		//If theyre all false send back empty callback....
-		callback(null);
+		if(userData.toggleCharged == false && userData.toggleEvidence == false 
+		&& userData.toggleMedical == false && userData.toggleRelocation == false)
+		{
+			console.log("No email to send out");
+			callback(null);
+		}
 
 	}
 };
