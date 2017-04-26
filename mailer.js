@@ -93,8 +93,8 @@ module.exports = {
 	formatSARAEmail: function(userData, callback){
 		//Set up mail for all three objects
 		mailArr.forEach(function(mailOption){
-			mailOption.text = ""
-			mailOption.html = "<ul>"
+			mailOption.text = "A SARA User has requested your services:\n"
+			mailOption.html = "A SARA User has requested your services:<ul>"
 		})
 
 		//Put the firstname and lastname on each object

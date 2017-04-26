@@ -1,3 +1,5 @@
+//All code for the SARA Server. Using the express package to make set up even simpler
+
 var express = require('express');
 var mailer = require('./mailer');
 var app = express();
@@ -11,9 +13,7 @@ app.use(BodyParser.json());
 app.use(logger('dev')); 
 app.use(cors());
 
-
 app.post('/SARAEmail', function (req, res) {
-	//console.log(req.body);
 	//Callback to make sure the email actually sent successfully before returning a 200 OK Response.
 	//500 Internal Server Error otherwise.
 	mailer.formatSARAEmail(req.body, function(error){
