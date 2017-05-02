@@ -8,6 +8,7 @@ npm-debug.log
 # Config Files
 GmailAppInfo.txt
 FacebookAppInfo.txt
+gmailappinfo.txt
 
 # VS Code Stuff
 .vscode
